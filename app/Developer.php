@@ -23,4 +23,5 @@ self::$instance = new Developer();
 }
 return self::$instance;
 }
+
 }

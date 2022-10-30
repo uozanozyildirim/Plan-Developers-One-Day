@@ -42,19 +42,6 @@ class Task extends Model
             ]
         );
 
-
-        DB::table($this->table)->updateOrInsert(
-            [
-                'name' => $name
-            ],
-            [
-                'complexity' => $complexity,
-                'time' => $estimated_time,
-                'created_at' => date('Y-m-d h:i:s'),
-            ]
-        );
-        return '202';
-
     }
 }
 

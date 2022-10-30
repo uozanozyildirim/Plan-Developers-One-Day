@@ -16,6 +16,7 @@ class CreateDeveloperTable extends Migration
         Schema::create('developer', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('name');
+            $table->string('role');
             $table->integer('weekly_work_hours');
             $table->integer('seniority');
             $table->timestamps();

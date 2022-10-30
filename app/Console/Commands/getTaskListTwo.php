@@ -61,7 +61,6 @@ class getTaskListTwo extends Command
 
     }
 
-
     public function handle()
     {
         return 'Command Not Succesfully Completed';

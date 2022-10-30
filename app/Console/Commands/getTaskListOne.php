@@ -2,9 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Models\User;
 use Illuminate\Console\Command;
-use App\Models\Task;
+use App\Task;
 class getTaskListOne extends Command
 {
     /**
@@ -59,6 +58,6 @@ class getTaskListOne extends Command
 
     public function handle()
     {
-        return 'Command Not Succesfully Completed';
+        return 'TCommand Not Succesfully Completed';
     }
 }

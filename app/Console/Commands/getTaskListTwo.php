@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\User;
 use Illuminate\Console\Command;
-use App\Models\Task;
+use App\Task;
 class getTaskListTwo extends Command
 {
     /**

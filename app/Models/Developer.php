@@ -9,21 +9,21 @@ use Illuminate\Support\Facades\DB;
 class Developer extends Model
 {
     use HasFactory;
-    public $table = 'developer';
-
-    public function getItems()
-    {
-        return DB::table($this->table)->select('*')->get();
-    }
+    protected $table = 'developer';
 
     public function getTotalHoursOfWork()
     {
         return DB::table($this->table)->sum('weekly_work_hours');
     }
 
-    public function getTotalAbilityToHandleComplexity()
+    public function getTotalWorkComplexity()
     {
         return DB::table($this->table)->sum('seniority');
+    }
+
+    public function getItems()
+    {
+        return DB::table($this->table)->get();
     }
 
 

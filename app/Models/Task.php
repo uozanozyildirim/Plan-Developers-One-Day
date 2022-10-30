@@ -8,55 +8,24 @@ use http\Exception;
 
 class Task extends Model
 {
-    private static $instance = null;
-    public $table = 'task';
 
+    protected $table = 'task';
 
-    private function __construct()
-    {
-    //
-    }
-
-
-    public static function getInstance()
-    {
-        if (self::$instance == null) {
-            self::$instance = new Task();
-        }
-
-        return self::$instance;
-    }
-
-    public function createNewTask($name, $complexity,$estimated_time)
-    {
-        DB::table($this->table)->updateOrInsert(
-            [
-                'name' => $name
-            ],
-            [
-                'complexity' => $complexity,
-                'time' => $estimated_time,
-                'created_at' => date('Y-m-d h:i:s'),
-            ]
-        );
-
-    }
 
     public function getItems()
     {
-       return  DB::table($this->table)->select('*')->get();
+        return  DB::table($this->table)->select('*')->get();
     }
 
     public function getTotalHoursOfWork()
     {
-       return DB::table($this->table)->sum('time');
+        return DB::table($this->table)->sum('time');
     }
 
     public function getTotalWorkComplexity()
     {
-       return DB::table($this->table)->sum('time');
+        return DB::table($this->table)->sum('complexity');
     }
 
 }
-
 ?>

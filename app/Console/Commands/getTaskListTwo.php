@@ -48,10 +48,14 @@ class getTaskListTwo extends Command
         $response = json_decode($response, true);
 
 
-
         foreach($response as $task)
         {
-            Task::getInstance()->createNewTask($task->id, $task->zorluk, $task->sure);
+
+            foreach($task as $title => $tmp)
+            {
+                Task::getInstance()->createNewTask($title, $tmp['level'], $tmp['estimated_duration']);
+
+            }
 
         }
 

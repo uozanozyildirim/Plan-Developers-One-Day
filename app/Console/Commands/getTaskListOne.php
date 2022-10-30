@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\User;
 use Illuminate\Console\Command;
 use App\Models\Task;
 class getTaskListOne extends Command
@@ -18,7 +19,7 @@ class getTaskListOne extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Task List One is created for inserting datas from First Provider';
 
     /**
      * Create a new command instance.
@@ -29,9 +30,7 @@ class getTaskListOne extends Command
     {
         parent::__construct();
 
-
         $curl = curl_init();
-
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'http://www.mocky.io/v2/5d47f24c330000623fa3ebfa',
@@ -48,26 +47,18 @@ class getTaskListOne extends Command
         curl_close($curl);
         $response = json_decode($response);
 
+
         foreach($response as $task)
         {
-            Task::createOrUpdate([
-               'name' => $task->id
-            ],
-            ['time' => $task->sure,
-              'complexity' => $task->zorluk
-            ]);
-        }
+            Task::getInstance()->createNewTask($task->id, $task->zorluk, $task->sure);
 
+        }
 
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
+
     public function handle()
     {
-        return 0;
+        return 'Command Not Succesfully Completed';
     }
 }

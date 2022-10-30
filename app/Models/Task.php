@@ -1,23 +1,61 @@
 <?php
 
-namespace App\Models;
+namespace  App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use http\Exception;
+
 class Task extends Model
-
 {
-    protected $table = 'task';
+// Hold the class instance.
+    private static $instance = null;
+    public $table = 'task';
 
-    private function  createNewTask($name, $complexity, $estimated_time)
+
+    private function __construct()
     {
-        DB::table($this->table)->insert(
-            [
-                'name' => $name,
-                'complexity' =>$complexity,
-                'estimated_time' => $estimated_time,
-            ]
-        );
+    //
     }
 
+
+
+    public static function getInstance()
+    {
+        if (self::$instance == null) {
+            self::$instance = new Task();
+        }
+
+        return self::$instance;
+    }
+
+    public function createNewTask($name, $complexity,$estimated_time)
+    {
+        DB::table($this->table)->updateOrInsert(
+            [
+                'name' => $name
+            ],
+            [
+                'complexity' => $complexity,
+                'time' => $estimated_time,
+                'created_at' => date('Y-m-d h:i:s'),
+            ]
+        );
+
+
+        DB::table($this->table)->updateOrInsert(
+            [
+                'name' => $name
+            ],
+            [
+                'complexity' => $complexity,
+                'time' => $estimated_time,
+                'created_at' => date('Y-m-d h:i:s'),
+            ]
+        );
+        return '202';
+
+    }
 }
+
+?>

@@ -17,6 +17,7 @@ class CreateTaskManagerTable extends Migration
             $table->id()->autoIncrement();
             $table->string('developer_id');
             $table->string('task_id');
+            $table->integer('week_number');
             $table->integer('estimated_time_to_finish');
             $table->timestamps();
         });

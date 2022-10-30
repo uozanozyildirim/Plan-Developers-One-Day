@@ -41,8 +41,6 @@ class Developer
 
     }
 
-
-
     public function getTotalHoursOfWork()
     {
         $dev = new \App\Models\Developer();

@@ -8,7 +8,6 @@ use http\Exception;
 
 class Task extends Model
 {
-// Hold the class instance.
     private static $instance = null;
     public $table = 'task';
 
@@ -17,7 +16,6 @@ class Task extends Model
     {
     //
     }
-
 
 
     public static function getInstance()
@@ -43,6 +41,14 @@ class Task extends Model
         );
 
     }
+
+    public function getItems()
+    {
+        DB::table($this->table)->select('*')->get();
+    }
+
+
+
 }
 
 ?>

@@ -8,12 +8,22 @@ use Illuminate\Support\Facades\DB;
 
 class Developer extends Model
 {
-    public $table = 'developer';
     use HasFactory;
+    public $table = 'developer';
 
     public function getItems()
     {
-        DB::table($this->table)->select('*')->get();
+        return DB::table($this->table)->select('*')->get();
+    }
+
+    public function getTotalHoursOfWork()
+    {
+        return DB::table($this->table)->sum('weekly_work_hours');
+    }
+
+    public function getTotalAbilityToHandleComplexity()
+    {
+        return DB::table($this->table)->sum('seniority');
     }
 
 

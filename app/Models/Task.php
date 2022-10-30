@@ -44,10 +44,18 @@ class Task extends Model
 
     public function getItems()
     {
-        DB::table($this->table)->select('*')->get();
+       return  DB::table($this->table)->select('*')->get();
     }
 
+    public function getTotalHoursOfWork()
+    {
+       return DB::table($this->table)->sum('time');
+    }
 
+    public function getTotalWorkComplexity()
+    {
+       return DB::table($this->table)->sum('time');
+    }
 
 }
 

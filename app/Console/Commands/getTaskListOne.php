@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-
+use App\Models\Task;
 class getTaskListOne extends Command
 {
     /**
@@ -46,10 +46,17 @@ class getTaskListOne extends Command
 
         $response = curl_exec($curl);
         curl_close($curl);
-        $response = json_decode($response, true);
+        $response = json_decode($response);
 
-//        var_dump($response[0]);
-
+        foreach($response as $task)
+        {
+            Task::createOrUpdate([
+               'name' => $task->id
+            ],
+            ['time' => $task->sure,
+              'complexity' => $task->zorluk
+            ]);
+        }
 
 
     }

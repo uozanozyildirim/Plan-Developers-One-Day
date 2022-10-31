@@ -57,6 +57,12 @@ class Task
         return $dev->getItems();
     }
 
+    public function getItemsOrderByTime()
+    {
+        $dev = new \App\Models\Task();
+        return $dev->getItemsOrderByTime();
+    }
+
 
 }
 

@@ -17,15 +17,12 @@ class Task extends Model
         return  DB::table($this->table)->select('*')->get();
     }
 
-    public function getTotalHoursOfWork()
+    public function getItemsOrderByTime()
     {
-        return DB::table($this->table)->sum('time');
+        return  DB::table($this->table)->orderByDesc('time')->get();
     }
 
-    public function getTotalWorkComplexity()
-    {
-        return DB::table($this->table)->sum('complexity');
-    }
+
 
 }
 ?>

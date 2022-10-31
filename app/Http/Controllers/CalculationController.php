@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Task;
 use App\Developer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CalculationController extends Controller
 {
@@ -16,23 +17,29 @@ class CalculationController extends Controller
     public function ApportionTasksToDevelopers()
     {
 
-        // what i want to do is that; group the task in a array and that array's summary of estimated_hours field should not be over than 45 hours.
-        $items  = Task::getInstance()->getItems();
 
-        foreach ($items as $item) {
-            if (Sum($firstArray) > 45) {
-                "exit";
-            } elseif (Sum($firstArray) < 45) {
-                'INSERT INTO FIRST DEVELOPERS TO DO LIST';
-            } elseif (Sum($secondArray) > 45) {
-                "exit";
-            } elseif (Sum($secondArray) < 45) {
-                'INSERT INTO SECOND DEVELOPERS TO DO LIST';
-            }
-            // It goes like that to the fifth developers task list.
+        $tasks = Task::getInstance()->getItemsOrderByTime();
+        $devs = Developer::getInstance()->getItems();
 
+
+        foreach ($tasks as $tmp)
+           {
+                // task_id is an unique field and that way a task cannot be assigned to multiple developer.
+               foreach ($devs as $dev)
+               {
+                   if($tmp['complexity'] = $dev['seniority'])
+                   {
+                       DB::table('task_manager')->insert([
+                           'developer_id' => $dev['id'],
+                           'task_id' => $tmp['id'],
+                           'estimated_time_to_finish' => $tasks['time']
+                       ]);
+                   }
+               }
+
+           }
 
         }
-    }
+
 
 }

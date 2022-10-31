@@ -40,7 +40,7 @@ class ApportionTasksToDevelopers extends Command
         foreach ($tasks as $tmp) {
             // task_id is an unique field and that way a task cannot be assigned to multiple developer.
             foreach ($devs as $dev) {
-                if ($tmp['complexity'] = $dev['seniority']) {
+                if ($tmp->complexity = $dev->seniority) {
                    $taskManager->create_task_relationship($dev->id, $tmp->id, $tmp->time);
                 }
             }

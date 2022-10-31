@@ -7,25 +7,27 @@
 <style>
     table, th, td {
         border: 1px solid black;
+        margin: 10px;
     }
 </style>
 
 
-<h1>The table element</h1>
+<h1>Task Manager</h1>
 
-<table>
+<table style="width: 100%;">
+@foreach($taskManager as $tmp)
     <tr>
-        <th>Month</th>
-        <th>Savings</th>
+            <th>Developer</th>
+            <th>Task</th>
+            <th>Estimated Hours To Finish</th>
     </tr>
+
     <tr>
-        <td>January</td>
-        <td>$100</td>
+        <td>{{ $tmp['developer_name'] }}</td>
+        <td>{{ $tmp['task_name'] }}</td>
+        <td>{{ $tmp['estimated_time_to_finish'] }}</td>
     </tr>
-    <tr>
-        <td>February</td>
-        <td>$80</td>
-    </tr>
+@endforeach
 </table>
 
 

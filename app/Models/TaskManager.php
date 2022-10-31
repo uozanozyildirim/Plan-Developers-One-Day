@@ -15,7 +15,11 @@ class TaskManager extends Model
 
     public function getItems()
     {
-        return DB::table($this->table)->get();
+        return DB::table($this->table)
+            ->join('task', 'task.id',  '=','task_manager.task_id')
+            ->join('developer', 'developer.id' , '=', 'task_manager.developer_id' )
+            ->select('task.name as task_name','developer.name as developer_name', 'task_manager.estimated_time_to_finish')
+            ->get();
     }
 
     public function getItemsWeekly()

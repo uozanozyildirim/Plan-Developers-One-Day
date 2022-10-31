@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TaskManager;
 use App\Task;
 use App\Developer;
 use Illuminate\Http\Request;
@@ -14,9 +15,11 @@ class CalculationController extends Controller
         return Task::getInstance()->getTotalHoursOfWork() / Developer::getInstance()->getTotalHoursOfWork();
     }
 
-    public function ListTask()
+    public function listTask()
     {
-
+        $taskManager = new TaskManager();
+        $taskManager =  json_decode($taskManager->getItems(), true);
+        return view('welcome', ['taskManager' => $taskManager]);
 
     }
 

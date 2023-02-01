@@ -15,8 +15,6 @@ Developer’ların haftalık 45 saat çalıştığı varsayılarak, en kısa sü
 sağlayan bir algoritma ile haftalık developer bazında iş yapma programını ve işin minimum
 toplam kaç haftada biteceğini ekrana basacak bir ara yüz hazırlanmalı.
 Koşullar :
-· Programlama dili olarak PHP ve Framework olarak Symfony 4 tercih edilmeli. (Yetkin
-olduğun farklı bir framework tercih edebilirsin.)
 · 2 ayrı to-do iş listesi veren API'lerden (aşağıda mock server yanıtlarını bulabilirsin.) iş
 listesi çekilecek.
 
@@ -26,8 +24,8 @@ listesi veren API'nin eklenmesi gerekirse (Provider 3) bu sadece API tanıtımı
 · Bu verileri API’lerden çekmek için command (console) yazılacak ve veri tabanına
 kaydedecek. Ana sayfada veri tabanından okuduğu verilerle planlama sonucunu çıkartıp
 verileri gösterecek. İhtiyaç halinde ön yüzde Bootstrap ve Jquery vb. kullanılabilir.
-· Backend servisinde Facade, Factory, Proxy, Strategy veya Adapter vb. gibi patternleri ile
-geliştirme yapılması tercih edilir.
+
+
 Provider 1:
 http://www.mocky.io/v2/5d47f24c330000623fa3ebfa
 Provider 2:
